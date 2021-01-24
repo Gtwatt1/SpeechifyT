@@ -15,6 +15,7 @@
 		5A3DE14B25BC272D00497ABC /* SpeechifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE14A25BC272D00497ABC /* SpeechifyUITests.swift */; };
 		5A3DE15F25BC844300497ABC /* TransciberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE15E25BC844300497ABC /* TransciberViewModel.swift */; };
 		5A3DE16425BC849200497ABC /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE16325BC849200497ABC /* AudioRecordingService.swift */; };
+		5A3DE17225BCE3FA00497ABC /* TranscriberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5A3DE14C25BC272D00497ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A3DE15E25BC844300497ABC /* TransciberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransciberViewModel.swift; sourceTree = "<group>"; };
 		5A3DE16325BC849200497ABC /* AudioRecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
+		5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriberService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				5A3DE13625BC272D00497ABC /* Info.plist */,
 				5A3DE13325BC272D00497ABC /* Preview Content */,
 				5A3DE16325BC849200497ABC /* AudioRecordingService.swift */,
+				5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */,
 			);
 			path = Speechify;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				5A3DE13025BC272B00497ABC /* ContentView.swift in Sources */,
 				5A3DE12E25BC272B00497ABC /* SpeechifyApp.swift in Sources */,
 				5A3DE16425BC849200497ABC /* AudioRecordingService.swift in Sources */,
+				5A3DE17225BCE3FA00497ABC /* TranscriberService.swift in Sources */,
 				5A3DE15F25BC844300497ABC /* TransciberViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
