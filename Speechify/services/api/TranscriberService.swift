@@ -10,21 +10,21 @@ import Combine
 
 class TranscriberService {
     
-    func transcribeSpeech(recordedAudioURL: URL) -> AnyPublisher<Transcription, WeatherError> {
+    func transcribeSpeech(recordedAudioURL: URL) -> AnyPublisher<Transcription, TranscriptionError> {
         if let request = generateRequestData(recordedAudioURL: recordedAudioURL) {
             return URLSession.shared.dataTaskPublisher(for: request)
                 .mapError{ (error) in
-                    WeatherError.network(description: error.localizedDescription)
+                    TranscriptionError.network(description: error.localizedDescription)
                 }.tryMap{ result in
                     result.data
                 }
                 .decode(type: Transcription.self, decoder: JSONDecoder())
                 .mapError{ error in
-                    WeatherError.network(description: error.localizedDescription)
+                    .network(description: error.localizedDescription)
                 }
                 .eraseToAnyPublisher()
         }
-        return Fail(error: WeatherError.network(description: "Bad request")).eraseToAnyPublisher()
+        return Fail(error: .network(description: "Bad request")).eraseToAnyPublisher()
     }
     
 }
@@ -89,20 +89,4 @@ extension TranscriberService {
     }
 }
 
-enum WeatherError: Error {
-    case parsing(description: String)
-    case network(description: String)
-}
 
-struct Transcription: Codable {
-    let results: [Result]
-}
-
-struct Result: Codable {
-    let alternatives: [Alternative]
-}
-
-struct Alternative: Codable {
-    let transcript: String
-    let confidence: Double
-}

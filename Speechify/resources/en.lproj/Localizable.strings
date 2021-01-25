@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Speechify
+
+  Created by Olorunshola Godwin on 25/01/2021.
+  
+*/
+"record" = "Record";
+"stop_record" = "Stop Recording";
+"play" = "Play";
+"stop" = "Stop";
+"transription_view_description" = "Record, Transcribe and Play";

@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TranscriberView: View {
     @ObservedObject var viewModel = TransciberViewModel()
-    @State private var emptyTextBinding = ""
+    let pageDescription: LocalizedStringKey = "transription_view_description"
     var body: some View {
         VStack {
-            Text("Record, Transcribe and Play")
+            Text(pageDescription)
             switch viewModel.state {
             case .idle:
                 transcriptionResultTextField()
@@ -52,6 +52,8 @@ struct ContentView: View {
                 viewModel.recordAudio()
             }, label: {
                 Text(viewModel.recordButtonTitle)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
                     .frame(width: 100, height: 12)
                     .font(.system(size: 12))
                     .padding()
@@ -78,8 +80,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TranscriberView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TranscriberView()
     }
 }

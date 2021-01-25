@@ -15,10 +15,10 @@ class TransciberViewModel: ObservableObject {
     var audioRecordingService = AudioRecordingService()
     private var subscribers = Set<AnyCancellable>()
     var player: AVAudioPlayer!
-    @Published private(set) var recordButtonTitle: String = "Record"
-    @Published private(set) var playButtonTitle: String = "Record"
-    @Published private(set) var isRecordingAudio: Bool = false
-    @Published private(set) var isPlayingAudio: Bool = false
+    private(set) var recordButtonTitle: LocalizedStringKey = "record"
+    private(set) var playButtonTitle: LocalizedStringKey = "play"
+    private(set) var isRecordingAudio: Bool = false
+    private(set) var isPlayingAudio: Bool = false
     @Published private(set) var state = TransciberViewState.idle
     
     enum TransciberViewState {
@@ -30,7 +30,7 @@ class TransciberViewModel: ObservableObject {
     
     init() {
         audioRecordingService.isRecordingState
-            .map({$0 ? "Stop Recording" : "Record"})
+            .map({$0 ? "stop_record" : "record"})
             .assign(to: \.recordButtonTitle, on: self)
             .store(in: &subscribers)
         
@@ -39,7 +39,7 @@ class TransciberViewModel: ObservableObject {
             .store(in: &subscribers)
         
         audioRecordingService.recordedAudioFileURL
-            .mapError{ WeatherError.network(description: $0.localizedDescription) }
+            .mapError{ TranscriptionError.network(description: $0.localizedDescription) }
             .flatMap{ url in
                 return TranscriberService().transcribeSpeech(recordedAudioURL: url)
             } .receive(on: DispatchQueue.main)
