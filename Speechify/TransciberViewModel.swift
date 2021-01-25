@@ -15,9 +15,29 @@ class TransciberViewModel: ObservableObject {
     var audioRecordingService = AudioRecordingService()
     private var subscribers = Set<AnyCancellable>()
     var player: AVAudioPlayer!
-    @Published var transcribedWord: String = ""
+    @Published private(set) var recordButtonTitle: String = "Record"
+    @Published private(set) var playButtonTitle: String = "Record"
+    @Published private(set) var isRecordingAudio: Bool = false
+    @Published private(set) var isPlayingAudio: Bool = false
+    @Published private(set) var state = TransciberViewState.idle
+    
+    enum TransciberViewState {
+        case idle
+        case loading
+        case failure(String)
+        case success(String)
+    }
     
     init() {
+        audioRecordingService.isRecordingState
+            .map({$0 ? "Stop Recording" : "Record"})
+            .assign(to: \.recordButtonTitle, on: self)
+            .store(in: &subscribers)
+        
+        audioRecordingService.isRecordingState
+            .assign(to: \.isRecordingAudio, on: self)
+            .store(in: &subscribers)
+        
         audioRecordingService.recordedAudioFileURL
             .mapError{ WeatherError.network(description: $0.localizedDescription) }
             .flatMap{ url in
@@ -26,20 +46,21 @@ class TransciberViewModel: ObservableObject {
             .sink { [weak self] value in
                 guard let self = self else { return }
                 switch value {
-                case .failure:
-                    break
+                case .failure(let error):
+                    self.state = TransciberViewState.failure(error.localizedDescription)
                 case .finished:
                     break
                 }
             } receiveValue: { [weak self] (transcribedSpeechResult) in
-                                if let text = transcribedSpeechResult.results.first?.alternatives.first?.transcript {
-                                    self?.transcribedWord = text
-                                }
+                if let text = transcribedSpeechResult.results.first?.alternatives.first?.transcript {
+                    self?.state = .success(text)
+                }
             }
             .store(in: &subscribers)
     }
     
     func recordAudio() {
+        self.state = .loading
         audioRecordingService.startStopAudioRecording()
     }
     

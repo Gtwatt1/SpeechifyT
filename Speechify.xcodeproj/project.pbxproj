@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A3DE12E25BC272B00497ABC /* SpeechifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE12D25BC272B00497ABC /* SpeechifyApp.swift */; };
-		5A3DE13025BC272B00497ABC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE12F25BC272B00497ABC /* ContentView.swift */; };
+		5A3DE13025BC272B00497ABC /* TranscriberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE12F25BC272B00497ABC /* TranscriberView.swift */; };
 		5A3DE13225BC272D00497ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3DE13125BC272D00497ABC /* Assets.xcassets */; };
 		5A3DE13525BC272D00497ABC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3DE13425BC272D00497ABC /* Preview Assets.xcassets */; };
 		5A3DE14025BC272D00497ABC /* SpeechifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE13F25BC272D00497ABC /* SpeechifyTests.swift */; };
@@ -16,6 +16,7 @@
 		5A3DE15F25BC844300497ABC /* TransciberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE15E25BC844300497ABC /* TransciberViewModel.swift */; };
 		5A3DE16425BC849200497ABC /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE16325BC849200497ABC /* AudioRecordingService.swift */; };
 		5A3DE17225BCE3FA00497ABC /* TranscriberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */; };
+		5A3DE17D25BF5EA300497ABC /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE17C25BF5EA200497ABC /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 /* Begin PBXFileReference section */
 		5A3DE12A25BC272B00497ABC /* Speechify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speechify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3DE12D25BC272B00497ABC /* SpeechifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechifyApp.swift; sourceTree = "<group>"; };
-		5A3DE12F25BC272B00497ABC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5A3DE12F25BC272B00497ABC /* TranscriberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriberView.swift; sourceTree = "<group>"; };
 		5A3DE13125BC272D00497ABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A3DE13425BC272D00497ABC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A3DE13625BC272D00497ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		5A3DE15E25BC844300497ABC /* TransciberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransciberViewModel.swift; sourceTree = "<group>"; };
 		5A3DE16325BC849200497ABC /* AudioRecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
 		5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriberService.swift; sourceTree = "<group>"; };
+		5A3DE17C25BF5EA200497ABC /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,13 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				5A3DE12D25BC272B00497ABC /* SpeechifyApp.swift */,
-				5A3DE12F25BC272B00497ABC /* ContentView.swift */,
+				5A3DE12F25BC272B00497ABC /* TranscriberView.swift */,
 				5A3DE15E25BC844300497ABC /* TransciberViewModel.swift */,
 				5A3DE13125BC272D00497ABC /* Assets.xcassets */,
 				5A3DE13625BC272D00497ABC /* Info.plist */,
 				5A3DE13325BC272D00497ABC /* Preview Content */,
 				5A3DE16325BC849200497ABC /* AudioRecordingService.swift */,
 				5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */,
+				5A3DE17C25BF5EA200497ABC /* ActivityIndicator.swift */,
 			);
 			path = Speechify;
 			sourceTree = "<group>";
@@ -268,10 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A3DE13025BC272B00497ABC /* ContentView.swift in Sources */,
+				5A3DE13025BC272B00497ABC /* TranscriberView.swift in Sources */,
 				5A3DE12E25BC272B00497ABC /* SpeechifyApp.swift in Sources */,
 				5A3DE16425BC849200497ABC /* AudioRecordingService.swift in Sources */,
 				5A3DE17225BCE3FA00497ABC /* TranscriberService.swift in Sources */,
+				5A3DE17D25BF5EA300497ABC /* ActivityIndicator.swift in Sources */,
 				5A3DE15F25BC844300497ABC /* TransciberViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,9 +39,7 @@ class AudioRecordingService: NSObject, AVAudioRecorderDelegate {
     
     func startAudioRecording() {
         audioRecorder = audioRecorderController.setUpRecorder()
-        audioRecorder?.publisher(for: \.isRecording)
-            .subscribe(_isRecordingState)
-            .store(in: &subscribers)
+        _isRecordingState.send(true)
         audioRecorder?.delegate = self
         audioRecorder?.record()
     }

@@ -83,7 +83,6 @@ extension TranscriberService {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-//        request.setValue( "Bearer \(GoogleSpeechTextAPI.key)", forHTTPHeaderField: "Authorization")
         request.httpBody = requestData
         request.httpMethod = "POST"
         return request
