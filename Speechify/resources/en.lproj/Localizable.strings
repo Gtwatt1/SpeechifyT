@@ -7,6 +7,10 @@
 */
 "record" = "Record";
 "stop_record" = "Stop Recording";
+"start_record" = "Start Recording";
+"start_record_voice" = "start recording your voice";
+"stop_record_voice" = "Stop recording your voice";
 "play" = "Play";
 "stop" = "Stop";
 "transription_view_description" = "Record, Transcribe and Play";
+"alert" = "Alert";

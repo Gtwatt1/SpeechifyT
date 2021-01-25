@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+
 struct TranscriberView: View {
     @ObservedObject var viewModel = TransciberViewModel()
     let pageDescription: LocalizedStringKey = "transription_view_description"
     var body: some View {
         VStack {
             Text(pageDescription)
+                .accessibility(addTraits: .isStaticText)
             switch viewModel.state {
             case .idle:
                 transcriptionResultTextField()
@@ -24,7 +26,7 @@ struct TranscriberView: View {
             case .failure(let failure):
                 transcriptionResultTextField()
                     .alert(isPresented: .constant(true)) {
-                    Alert(title: Text("Alert"),
+                    Alert(title: Text(LocalizedStringKey("alert")),
                           message: Text(failure),
                           dismissButton: .default(Text("Ok!")))
                 }
@@ -33,7 +35,6 @@ struct TranscriberView: View {
                     .frame(height: 240)
                     .border(Color.gray, width: 1)
             }
-
             Spacer()
             mediaButtons
         }.padding(24)
@@ -49,33 +50,49 @@ struct TranscriberView: View {
     var mediaButtons: some View {
         HStack {
             Button(action: {
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 viewModel.recordAudio()
+
             }, label: {
                 Text(viewModel.recordButtonTitle)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
-                    .frame(width: 100, height: 12)
-                    .font(.system(size: 12))
+                    .frame(width: 100, height: 20)
+                    .font(.body)
                     .padding()
                     .foregroundColor(.white)
                     .background(viewModel.isPlayingAudio ? Color("inactive_button") : Color("active_button") )
                     .clipShape(Capsule())
                     .animation(.spring())
             }) .disabled(viewModel.isPlayingAudio)
+            .accessibility(label: viewModel.isRecordingAudio ?
+                            Text(LocalizedStringKey("stop_record")) :
+                            Text(LocalizedStringKey("start_record")))
+            .accessibility(hint: viewModel.isRecordingAudio ?
+                            Text(LocalizedStringKey("stop_record_voice")):
+                            Text(LocalizedStringKey("start_record_voice")))
+            .accessibility(addTraits: .isButton)
+
 
             Button(action: {
-                
+
             }, label: {
                 Text("Play")
-                    .frame(width: 120, height: 16)
-                    .font(.system(size: 12))
+                    .frame(width: 120, height: 20)
+                    .font(.body)
                     .padding()
                     .foregroundColor(.white)
                     .background(viewModel.isRecordingAudio ? Color("inactive_button") : Color("active_button"))
                     .clipShape(Capsule())
                     .animation(.spring())
             }).disabled(viewModel.isRecordingAudio)
-
+            .accessibility(label: viewModel.isRecordingAudio ?
+                            Text("Stop Recording") :
+                            Text("Start Recording") )
+            .accessibility(hint: viewModel.isRecordingAudio ?
+                            Text("Stop recording your voice") :
+                            Text("Start recording your voice") )
+            .accessibility(addTraits: .isButton)
         }
     }
 }

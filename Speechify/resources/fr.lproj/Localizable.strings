@@ -10,3 +10,7 @@
 "play" = "jouer";
 "stop" = "Arrêtez";
 "transription_view_description" = "Enregistrer, transcrire et jouer";
+"start_record" = "commencer l'enregistrement";
+"start_record_voice" = "commencez à enregistrer votre voix";
+"start_record_voice" = "arrête d'enregistrer ta voix";
+"alert" = "alerte";
