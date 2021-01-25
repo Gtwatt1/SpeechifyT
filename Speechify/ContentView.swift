@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var textFieldValue: String = ""
     @ObservedObject var viewModel = TransciberViewModel()
     var body: some View {
         VStack {
             Text("Help")
-            TextField("", text: $textFieldValue)
+            TextField("", text: $viewModel.transcribedWord)
                 .frame(height: 240)
                 .border(Color.gray, width: 1)
             Spacer()
