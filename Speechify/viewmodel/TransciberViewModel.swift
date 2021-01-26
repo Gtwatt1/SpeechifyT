@@ -10,25 +10,30 @@ import SwiftUI
 import AVFoundation
 import Combine
 
+/**
+ This class would be used to control the state of the Transcriber View.
+ */
 class TransciberViewModel: ObservableObject {
     
-    var audioRecordingService = AudioRecordingService()
+    private var audioRecordingService: AudioRecordingService
+    private var audioTextHighlighter: PlayAudioWithTextHighlightingService
+    private var transcriberApiService: TranscriberApiService
     private var subscribers = Set<AnyCancellable>()
-    var player: AVAudioPlayer!
     private(set) var recordButtonTitle: LocalizedStringKey = "record"
     private(set) var playButtonTitle: LocalizedStringKey = "play"
     private(set) var isRecordingAudio: Bool = false
     private(set) var isPlayingAudio: Bool = false
+    private var recordedAudioURL: URL?
+    private var transcriptionWithTimeStamp: GoogleSpeechToText.Alternative?
     @Published private(set) var state = TransciberViewState.idle
     
-    enum TransciberViewState {
-        case idle
-        case loading
-        case failure(String)
-        case success(String)
-    }
-    
-    init() {
+    init( audioRecordingService: AudioRecordingService,
+          audioTextHighlighter: PlayAudioWithTextHighlightingService,
+          transcriberApiService: TranscriberApiService) {
+        self.audioRecordingService = audioRecordingService
+        self.audioTextHighlighter = audioTextHighlighter
+        self.transcriberApiService = transcriberApiService
+
         audioRecordingService.isRecordingState
             .map({$0 ? "stop_record" : "record"})
             .assign(to: \.recordButtonTitle, on: self)
@@ -40,8 +45,9 @@ class TransciberViewModel: ObservableObject {
         
         audioRecordingService.recordedAudioFileURL
             .mapError{ TranscriptionError.network(description: $0.localizedDescription) }
-            .flatMap{ url in
-                return TranscriberService().transcribeSpeech(recordedAudioURL: url)
+            .flatMap{ url -> AnyPublisher<GoogleSpeechToText.Transcription,TranscriptionError> in
+                self.recordedAudioURL = url
+                return self.transcriberApiService.transcribeSpeech(recordedAudioURL: url)
             } .receive(on: DispatchQueue.main)
             .sink { [weak self] value in
                 guard let self = self else { return }
@@ -52,25 +58,42 @@ class TransciberViewModel: ObservableObject {
                     break
                 }
             } receiveValue: { [weak self] (transcribedSpeechResult) in
-                if let text = transcribedSpeechResult.results.first?.alternatives.first?.transcript {
-                    self?.state = .success(text)
+                if let transcriptionWithTimeStamp = transcribedSpeechResult.results.first?.alternatives.first {
+                    self?.transcriptionWithTimeStamp = transcriptionWithTimeStamp
+                    self?.state = .success(
+                        SentenceWithWordHighlighting(
+                            beforeHighlightedString: transcriptionWithTimeStamp.transcript.capitalized
+                        )
+                    )
                 }
             }
             .store(in: &subscribers)
     }
     
-    func recordAudio() {
+    func startStopAudioRecording() {
         self.state = .loading
         audioRecordingService.startStopAudioRecording()
     }
     
-    func test(url: URL) {
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player.prepareToPlay()
-            player.play()
-        }catch {
-            print(error)
+    func playAudio() {
+        if let recordedAudioURL = recordedAudioURL,
+           let transcriptionWithTimeStamp = transcriptionWithTimeStamp {
+            audioTextHighlighter = PlayAudioWithTextHighlightingService()
+            audioTextHighlighter.setup(
+                audioURL: recordedAudioURL,
+                transcribedSpeech: transcriptionWithTimeStamp
+            )
+            audioTextHighlighter.playAudioAndHighlightText()
         }
+        audioTextHighlighter.sentenceWithHighlightedWord.sink(receiveValue: { (text) in
+            self.state = .success(text)
+        }).store(in: &subscribers)
     }
+}
+
+enum TransciberViewState {
+    case idle
+    case loading
+    case failure(String)
+    case success(SentenceWithWordHighlighting)
 }

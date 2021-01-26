@@ -15,12 +15,16 @@
 		5A3DE14B25BC272D00497ABC /* SpeechifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE14A25BC272D00497ABC /* SpeechifyUITests.swift */; };
 		5A3DE15F25BC844300497ABC /* TransciberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE15E25BC844300497ABC /* TransciberViewModel.swift */; };
 		5A3DE16425BC849200497ABC /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE16325BC849200497ABC /* AudioRecordingService.swift */; };
-		5A3DE17225BCE3FA00497ABC /* TranscriberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */; };
+		5A3DE17225BCE3FA00497ABC /* TranscriberApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE17125BCE3FA00497ABC /* TranscriberApiService.swift */; };
 		5A3DE17D25BF5EA300497ABC /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE17C25BF5EA200497ABC /* ActivityIndicator.swift */; };
 		5A3DE19225BF5FFB00497ABC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A3DE19425BF5FFB00497ABC /* Localizable.strings */; };
 		5A3DE1A325BF653600497ABC /* AudioRecorderConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1A225BF653600497ABC /* AudioRecorderConfigurationController.swift */; };
 		5A3DE1A925BF65AF00497ABC /* Transcription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1A825BF65AF00497ABC /* Transcription.swift */; };
 		5A3DE1B125BF65C700497ABC /* TranscriptionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1B025BF65C700497ABC /* TranscriptionError.swift */; };
+		5A3DE1BC25BFF93B00497ABC /* SentenceWithWordHighlighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1BB25BFF93B00497ABC /* SentenceWithWordHighlighting.swift */; };
+		5A3DE1C125BFFAF400497ABC /* SentenceWithHighlightedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1C025BFFAF400497ABC /* SentenceWithHighlightedWordView.swift */; };
+		5A3DE1C725BFFC3400497ABC /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */; };
+		5A3DE1CF25C0024F00497ABC /* PlayAudioTextHighlightingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +59,17 @@
 		5A3DE14C25BC272D00497ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A3DE15E25BC844300497ABC /* TransciberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransciberViewModel.swift; sourceTree = "<group>"; };
 		5A3DE16325BC849200497ABC /* AudioRecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
-		5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriberService.swift; sourceTree = "<group>"; };
+		5A3DE17125BCE3FA00497ABC /* TranscriberApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriberApiService.swift; sourceTree = "<group>"; };
 		5A3DE17C25BF5EA200497ABC /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		5A3DE19325BF5FFB00497ABC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A3DE19825BF600400497ABC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A3DE1A225BF653600497ABC /* AudioRecorderConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderConfigurationController.swift; sourceTree = "<group>"; };
 		5A3DE1A825BF65AF00497ABC /* Transcription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcription.swift; sourceTree = "<group>"; };
 		5A3DE1B025BF65C700497ABC /* TranscriptionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionError.swift; sourceTree = "<group>"; };
+		5A3DE1BB25BFF93B00497ABC /* SentenceWithWordHighlighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceWithWordHighlighting.swift; sourceTree = "<group>"; };
+		5A3DE1C025BFFAF400497ABC /* SentenceWithHighlightedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceWithHighlightedWordView.swift; sourceTree = "<group>"; };
+		5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
+		5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioTextHighlightingService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +164,7 @@
 			children = (
 				5A3DE17C25BF5EA200497ABC /* ActivityIndicator.swift */,
 				5A3DE12F25BC272B00497ABC /* TranscriberView.swift */,
+				5A3DE1C025BFFAF400497ABC /* SentenceWithHighlightedWordView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -171,6 +180,7 @@
 		5A3DE19E25BF64AC00497ABC /* services */ = {
 			isa = PBXGroup;
 			children = (
+				5A3DE1C525BFFBDD00497ABC /* audio_player */,
 				5A3DE1A125BF64F900497ABC /* audio_recording */,
 				5A3DE1A025BF64EE00497ABC /* api */,
 			);
@@ -188,7 +198,7 @@
 		5A3DE1A025BF64EE00497ABC /* api */ = {
 			isa = PBXGroup;
 			children = (
-				5A3DE17125BCE3FA00497ABC /* TranscriberService.swift */,
+				5A3DE17125BCE3FA00497ABC /* TranscriberApiService.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -207,8 +217,18 @@
 			children = (
 				5A3DE1A825BF65AF00497ABC /* Transcription.swift */,
 				5A3DE1B025BF65C700497ABC /* TranscriptionError.swift */,
+				5A3DE1BB25BFF93B00497ABC /* SentenceWithWordHighlighting.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		5A3DE1C525BFFBDD00497ABC /* audio_player */ = {
+			isa = PBXGroup;
+			children = (
+				5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */,
+				5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */,
+			);
+			path = audio_player;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,15 +362,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A3DE1C125BFFAF400497ABC /* SentenceWithHighlightedWordView.swift in Sources */,
 				5A3DE13025BC272B00497ABC /* TranscriberView.swift in Sources */,
+				5A3DE1CF25C0024F00497ABC /* PlayAudioTextHighlightingService.swift in Sources */,
 				5A3DE12E25BC272B00497ABC /* SpeechifyApp.swift in Sources */,
 				5A3DE16425BC849200497ABC /* AudioRecordingService.swift in Sources */,
 				5A3DE1A325BF653600497ABC /* AudioRecorderConfigurationController.swift in Sources */,
+				5A3DE1BC25BFF93B00497ABC /* SentenceWithWordHighlighting.swift in Sources */,
 				5A3DE1B125BF65C700497ABC /* TranscriptionError.swift in Sources */,
-				5A3DE17225BCE3FA00497ABC /* TranscriberService.swift in Sources */,
+				5A3DE17225BCE3FA00497ABC /* TranscriberApiService.swift in Sources */,
 				5A3DE17D25BF5EA300497ABC /* ActivityIndicator.swift in Sources */,
 				5A3DE1A925BF65AF00497ABC /* Transcription.swift in Sources */,
 				5A3DE15F25BC844300497ABC /* TransciberViewModel.swift in Sources */,
+				5A3DE1C725BFFC3400497ABC /* AudioPlayerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

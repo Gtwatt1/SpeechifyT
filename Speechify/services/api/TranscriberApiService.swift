@@ -8,9 +8,12 @@
 import Foundation
 import Combine
 
-class TranscriberService {
+/**
+ This class makes network call to Google Speech to text api to transcribe speech.
+ */
+class TranscriberApiService {
     
-    func transcribeSpeech(recordedAudioURL: URL) -> AnyPublisher<Transcription, TranscriptionError> {
+    func transcribeSpeech(recordedAudioURL: URL) -> AnyPublisher<GoogleSpeechToText.Transcription, TranscriptionError> {
         if let request = generateRequestData(recordedAudioURL: recordedAudioURL) {
             return URLSession.shared.dataTaskPublisher(for: request)
                 .mapError{ (error) in
@@ -18,7 +21,7 @@ class TranscriberService {
                 }.tryMap{ result in
                     result.data
                 }
-                .decode(type: Transcription.self, decoder: JSONDecoder())
+                .decode(type: GoogleSpeechToText.Transcription.self, decoder: JSONDecoder())
                 .mapError{ error in
                     .network(description: error.localizedDescription)
                 }
@@ -30,7 +33,7 @@ class TranscriberService {
 }
 
 
-extension TranscriberService {
+extension TranscriberApiService {
     
     enum GoogleSpeechTextAPI {
         static let scheme = "https"
@@ -59,7 +62,7 @@ extension TranscriberService {
         return components
     }
     
-    func audioUrlToBase64String(recordedAudioURL: URL) -> String? {
+    private func audioUrlToBase64String(recordedAudioURL: URL) -> String? {
         guard let data = try? Data(contentsOf: recordedAudioURL) else {
             return nil
         }

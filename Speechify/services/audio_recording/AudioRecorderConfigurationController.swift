@@ -9,6 +9,9 @@ import Foundation
 import Combine
 import AVFoundation
 
+/**
+ This class wouild be used to set up the Audio Recorder configurations.
+ */
 class AudioRecorderConfigurationController {
     
     var audioRecordingSession: AVAudioSession!
@@ -46,7 +49,6 @@ class AudioRecorderConfigurationController {
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue
         ]
-        
         return try? AVAudioRecorder(url: audioFilename, settings: settings)
     }
     

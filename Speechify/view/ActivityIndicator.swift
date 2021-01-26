@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+/**
+ Swiftui wrapper around UIKit UIActivityIndicatorView
+ */
 struct ActivityIndicator: UIViewRepresentable {
 
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {

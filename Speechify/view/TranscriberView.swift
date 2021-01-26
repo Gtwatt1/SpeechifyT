@@ -7,9 +7,17 @@
 
 import SwiftUI
 
-
+/**
+ App View.
+ */
 struct TranscriberView: View {
-    @ObservedObject var viewModel = TransciberViewModel()
+    @ObservedObject var viewModel = TransciberViewModel(
+        audioRecordingService: AudioRecordingService(
+            audioRecorderController: AudioRecorderConfigurationController()),
+        audioTextHighlighter: PlayAudioWithTextHighlightingService(),
+        transcriberApiService: TranscriberApiService()
+    )
+    
     let pageDescription: LocalizedStringKey = "transription_view_description"
     var body: some View {
         VStack {
@@ -40,18 +48,17 @@ struct TranscriberView: View {
         }.padding(24)
     }
     
-    func transcriptionResultTextField(_ result: String = "") -> some View {
-        Text(result)
-            .padding()
-            .frame(width:UIScreen.main.bounds.width - 48 , height: 240, alignment: .topLeading)
-            .border(Color.gray, width: 1)
+    func transcriptionResultTextField(
+        _ result: SentenceWithWordHighlighting = SentenceWithWordHighlighting()
+    ) -> some View {
+        SentenceWithHighlightedWordView(sentence: result)
     }
     
     var mediaButtons: some View {
         HStack {
             Button(action: {
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                viewModel.recordAudio()
+                viewModel.startStopAudioRecording()
 
             }, label: {
                 Text(viewModel.recordButtonTitle)
@@ -75,7 +82,7 @@ struct TranscriberView: View {
 
 
             Button(action: {
-
+                viewModel.playAudio()
             }, label: {
                 Text("Play")
                     .frame(width: 120, height: 20)
