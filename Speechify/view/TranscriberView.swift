@@ -59,7 +59,7 @@ struct TranscriberView: View {
         HStack {
             Button(action: {
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                viewModel.startStopAudioRecording()
+                viewModel.toggleAudioRecording()
             }, label: {
                 Text(viewModel.recordButtonTitle)
                     .multilineTextAlignment(.center)

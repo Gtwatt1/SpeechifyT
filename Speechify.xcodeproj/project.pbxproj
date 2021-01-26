@@ -25,6 +25,8 @@
 		5A3DE1C125BFFAF400497ABC /* SentenceWithHighlightedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1C025BFFAF400497ABC /* SentenceWithHighlightedWordView.swift */; };
 		5A3DE1C725BFFC3400497ABC /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */; };
 		5A3DE1CF25C0024F00497ABC /* PlayAudioTextHighlightingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */; };
+		5A3DE1F625C06E8700497ABC /* LocalizedStringKey+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1F525C06E8700497ABC /* LocalizedStringKey+Extension.swift */; };
+		5A3DE1FE25C0763700497ABC /* AVPlayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1FD25C0763700497ABC /* AVPlayer+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		5A3DE1C025BFFAF400497ABC /* SentenceWithHighlightedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceWithHighlightedWordView.swift; sourceTree = "<group>"; };
 		5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
 		5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioTextHighlightingService.swift; sourceTree = "<group>"; };
+		5A3DE1F525C06E8700497ABC /* LocalizedStringKey+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+Extension.swift"; sourceTree = "<group>"; };
+		5A3DE1FD25C0763700497ABC /* AVPlayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 		5A3DE12C25BC272B00497ABC /* Speechify */ = {
 			isa = PBXGroup;
 			children = (
+				5A3DE1F425C06E6B00497ABC /* extension */,
 				5A3DE1A725BF658000497ABC /* model */,
 				5A3DE19F25BF64C000497ABC /* resources */,
 				5A3DE19E25BF64AC00497ABC /* services */,
@@ -229,6 +234,15 @@
 				5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */,
 			);
 			path = audio_player;
+			sourceTree = "<group>";
+		};
+		5A3DE1F425C06E6B00497ABC /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				5A3DE1F525C06E8700497ABC /* LocalizedStringKey+Extension.swift */,
+				5A3DE1FD25C0763700497ABC /* AVPlayer+Extension.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,7 +387,9 @@
 				5A3DE17225BCE3FA00497ABC /* TranscriberApiService.swift in Sources */,
 				5A3DE17D25BF5EA300497ABC /* ActivityIndicator.swift in Sources */,
 				5A3DE1A925BF65AF00497ABC /* Transcription.swift in Sources */,
+				5A3DE1FE25C0763700497ABC /* AVPlayer+Extension.swift in Sources */,
 				5A3DE15F25BC844300497ABC /* TransciberViewModel.swift in Sources */,
+				5A3DE1F625C06E8700497ABC /* LocalizedStringKey+Extension.swift in Sources */,
 				5A3DE1C725BFFC3400497ABC /* AudioPlayerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,13 +23,12 @@ class TranscriberApiService {
                 }
                 .decode(type: GoogleSpeechToText.Transcription.self, decoder: JSONDecoder())
                 .mapError{ error in
-                    .network(description: error.localizedDescription)
+                    .parsing(description: error.localizedDescription)
                 }
                 .eraseToAnyPublisher()
         }
-        return Fail(error: .network(description: "Bad request")).eraseToAnyPublisher()
+        fatalError("Bad network request.")
     }
-    
 }
 
 

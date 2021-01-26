@@ -35,16 +35,12 @@ class TransciberViewModel: ObservableObject {
         self.audioTextHighlighter = audioTextHighlighter
         self.transcriberApiService = transcriberApiService
         audioTextHighlighter.audioPlayer = audioPlayer
-        
-        audioPlayer.isPlayingAudio
-            .map({$0 ? "stop" : "play"})
-            .assign(to: \.playButtonTitle, on: self)
-            .store(in: &subscribers)
-        
-        audioPlayer.isPlayingAudio
-            .assign(to: \.isPlayingAudio, on: self)
-            .store(in: &subscribers)
-        
+        setupAudioPlayerListener(audioPlayer: audioPlayer)
+        setupAudioRecordingListener()
+    }
+    
+    func setupAudioRecordingListener() {
+       
         audioRecordingService.isRecordingState
             .map({$0 ? "stop_record" : "record"})
             .assign(to: \.recordButtonTitle, on: self)
@@ -81,9 +77,20 @@ class TransciberViewModel: ObservableObject {
             .store(in: &subscribers)
     }
     
-    func startStopAudioRecording() {
+    func setupAudioPlayerListener(audioPlayer: AudioPlayerService) {
+        audioPlayer.isPlayingAudio
+            .map({$0 ? "stop" : "play"})
+            .assign(to: \.playButtonTitle, on: self)
+            .store(in: &subscribers)
+        
+        audioPlayer.isPlayingAudio
+            .assign(to: \.isPlayingAudio, on: self)
+            .store(in: &subscribers)
+    }
+    
+    func toggleAudioRecording() {
         self.state = .loading
-        audioRecordingService.startStopAudioRecording()
+        audioRecordingService.toggleAudioRecording()
     }
     
     func playAudio() {
@@ -94,10 +101,13 @@ class TransciberViewModel: ObservableObject {
                 transcribedSpeech: transcriptionWithTimeStamp
             )
             audioTextHighlighter.playAudioAndHighlightText()
+            audioTextHighlighter.sentenceWithHighlightedWord
+                .sink( receiveValue: { (text) in
+                self.state = .success(text)
+            }).store(in: &subscribers)
+        } else {
+            self.state = TransciberViewState.failure(LocalizedStringKey("no_record_error").stringValue())
         }
-        audioTextHighlighter.sentenceWithHighlightedWord.sink(receiveValue: { (text) in
-            self.state = .success(text)
-        }).store(in: &subscribers)
     }
 }
 

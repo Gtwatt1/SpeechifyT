@@ -14,3 +14,4 @@
 "stop" = "Stop";
 "transription_view_description" = "Record, Transcribe and Play";
 "alert" = "Alert";
+"no_record_error" = "No audio recording found, please record.";

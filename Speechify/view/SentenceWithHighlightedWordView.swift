@@ -24,7 +24,7 @@ struct SentenceWithHighlightedWordView: View {
                 .bold()
             +
             Text(sentence.afterHighlightedWord)
-        }.font(.title)
+        }.font(.headline)
         .foregroundColor(Color.black)
         .padding()
         .frame(width:UIScreen.main.bounds.width - 48 , height: 240, alignment: .topLeading)

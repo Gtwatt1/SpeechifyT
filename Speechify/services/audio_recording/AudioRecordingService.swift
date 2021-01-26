@@ -31,7 +31,7 @@ class AudioRecordingService: NSObject, AVAudioRecorderDelegate {
         audioRecorderController.checkAudioRecorderPermission()
     }
     
-    func startStopAudioRecording() {
+    func toggleAudioRecording() {
         if let _ = audioRecorder {
             stopAudioRecording()
         } else {

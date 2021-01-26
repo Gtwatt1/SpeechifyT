@@ -3,7 +3,6 @@
   Speechify
 
   Created by Olorunshola Godwin on 25/01/2021.
-  
 */
 "record" = "Record";
 "stop_record" = "Arrête d'enregistrer";
@@ -14,3 +13,4 @@
 "start_record_voice" = "commencez à enregistrer votre voix";
 "start_record_voice" = "arrête d'enregistrer ta voix";
 "alert" = "alerte";
+"no_record_error" = "Aucun enregistrement audio trouvé, veuillez enregistrer.";
