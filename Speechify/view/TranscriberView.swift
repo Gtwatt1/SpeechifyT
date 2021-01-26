@@ -24,6 +24,7 @@ struct TranscriberView: View {
         VStack {
             Text(pageDescription)
                 .accessibility(addTraits: .isStaticText)
+                .accessibility(label: Text(LocalizedStringKey("transription_view_description")))
             switch viewModel.state {
             case .idle:
                 transcriptionResultTextField()
@@ -35,9 +36,7 @@ struct TranscriberView: View {
             case .failure(let failure):
                 transcriptionResultTextField()
                     .alert(isPresented: .constant(true)) {
-                    Alert(title: Text(LocalizedStringKey("alert")),
-                          message: Text(failure),
-                          dismissButton: .default(Text("Ok!")))
+                        errorView(failure)
                 }
             case .success(let transcribedWord):
                 transcriptionResultTextField(transcribedWord)
@@ -49,10 +48,20 @@ struct TranscriberView: View {
         }.padding(24)
     }
     
+    func errorView(_ failure: String) -> Alert {
+        Alert(title: Text(LocalizedStringKey("alert")),
+              message: Text(failure),
+              dismissButton: .default(Text("Ok!"),
+                                      action: {
+                                        viewModel.dismissAlert()
+                                      }))
+    }
+    
     func transcriptionResultTextField(
         _ result: SentenceWithWordHighlighting = SentenceWithWordHighlighting()
     ) -> some View {
         SentenceWithHighlightedWordView(sentence: result)
+            .accessibility(label: Text(LocalizedStringKey("transcribed_speech")))
     }
     
     var mediaButtons: some View {
@@ -68,7 +77,7 @@ struct TranscriberView: View {
                     .font(.body)
                     .padding()
                     .foregroundColor(.white)
-                    .background(viewModel.isPlayingAudio ? Color("inactive_button") : Color("active_button") )
+                    .background(viewModel.isPlayingAudio ? Color.secondary : Color("active_button") )
                     .clipShape(Capsule())
                     .animation(.spring())
             }) .disabled(viewModel.isPlayingAudio)
@@ -89,16 +98,16 @@ struct TranscriberView: View {
                     .font(.body)
                     .padding()
                     .foregroundColor(.white)
-                    .background(viewModel.isRecordingAudio ? Color("inactive_button") : Color("active_button"))
+                    .background(viewModel.isRecordingAudio ? Color.secondary : Color("active_button"))
                     .clipShape(Capsule())
                     .animation(.spring())
             }).disabled(viewModel.isRecordingAudio)
-            .accessibility(label: viewModel.isRecordingAudio ?
-                            Text("Stop Recording") :
-                            Text("Start Recording") )
-            .accessibility(hint: viewModel.isRecordingAudio ?
-                            Text("Stop recording your voice") :
-                            Text("Start recording your voice") )
+            .accessibility(label: viewModel.isPlayingAudio ?
+                            Text(LocalizedStringKey("stop_play_record")) :
+                            Text(LocalizedStringKey("play_record") ))
+            .accessibility(hint: viewModel.isPlayingAudio ?
+                            Text(LocalizedStringKey("stop_play_audio_voice")) :
+                            Text(LocalizedStringKey("start_play_audio_voice") ))
             .accessibility(addTraits: .isButton)
         }
     }

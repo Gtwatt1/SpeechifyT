@@ -14,3 +14,8 @@
 "start_record_voice" = "arrête d'enregistrer ta voix";
 "alert" = "alerte";
 "no_record_error" = "Aucun enregistrement audio trouvé, veuillez enregistrer.";
+"play_record" = "Lire l'enregistrement";
+"stop_play_record" = "Arrêter la lecture de l'enregistrement";
+"start_play_audio_voice" = "Jouez votre enregistrement audio";
+"stop_play_audio_voice" = "Arrêtez de lire votre enregistrement audio";
+"transcribed_speech" = "Discours transcrit";

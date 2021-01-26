@@ -109,6 +109,10 @@ class TransciberViewModel: ObservableObject {
             self.state = TransciberViewState.failure(LocalizedStringKey("no_record_error").stringValue())
         }
     }
+    
+    func dismissAlert() {
+        self.state = .idle
+    }
 }
 
 enum TransciberViewState {

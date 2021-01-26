@@ -24,7 +24,7 @@
 		5A3DE1BC25BFF93B00497ABC /* SentenceWithWordHighlighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1BB25BFF93B00497ABC /* SentenceWithWordHighlighting.swift */; };
 		5A3DE1C125BFFAF400497ABC /* SentenceWithHighlightedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1C025BFFAF400497ABC /* SentenceWithHighlightedWordView.swift */; };
 		5A3DE1C725BFFC3400497ABC /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */; };
-		5A3DE1CF25C0024F00497ABC /* PlayAudioTextHighlightingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */; };
+		5A3DE1CF25C0024F00497ABC /* PlayAudioWithTextHighlightingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1CE25C0024F00497ABC /* PlayAudioWithTextHighlightingService.swift */; };
 		5A3DE1F625C06E8700497ABC /* LocalizedStringKey+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1F525C06E8700497ABC /* LocalizedStringKey+Extension.swift */; };
 		5A3DE1FE25C0763700497ABC /* AVPlayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DE1FD25C0763700497ABC /* AVPlayer+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 		5A3DE1BB25BFF93B00497ABC /* SentenceWithWordHighlighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceWithWordHighlighting.swift; sourceTree = "<group>"; };
 		5A3DE1C025BFFAF400497ABC /* SentenceWithHighlightedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceWithHighlightedWordView.swift; sourceTree = "<group>"; };
 		5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
-		5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioTextHighlightingService.swift; sourceTree = "<group>"; };
+		5A3DE1CE25C0024F00497ABC /* PlayAudioWithTextHighlightingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioWithTextHighlightingService.swift; sourceTree = "<group>"; };
 		5A3DE1F525C06E8700497ABC /* LocalizedStringKey+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+Extension.swift"; sourceTree = "<group>"; };
 		5A3DE1FD25C0763700497ABC /* AVPlayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				5A3DE1C625BFFC3400497ABC /* AudioPlayerService.swift */,
-				5A3DE1CE25C0024F00497ABC /* PlayAudioTextHighlightingService.swift */,
+				5A3DE1CE25C0024F00497ABC /* PlayAudioWithTextHighlightingService.swift */,
 			);
 			path = audio_player;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 			files = (
 				5A3DE1C125BFFAF400497ABC /* SentenceWithHighlightedWordView.swift in Sources */,
 				5A3DE13025BC272B00497ABC /* TranscriberView.swift in Sources */,
-				5A3DE1CF25C0024F00497ABC /* PlayAudioTextHighlightingService.swift in Sources */,
+				5A3DE1CF25C0024F00497ABC /* PlayAudioWithTextHighlightingService.swift in Sources */,
 				5A3DE12E25BC272B00497ABC /* SpeechifyApp.swift in Sources */,
 				5A3DE16425BC849200497ABC /* AudioRecordingService.swift in Sources */,
 				5A3DE1A325BF653600497ABC /* AudioRecorderConfigurationController.swift in Sources */,

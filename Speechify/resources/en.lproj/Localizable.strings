@@ -8,10 +8,15 @@
 "record" = "Record";
 "stop_record" = "Stop Recording";
 "start_record" = "Start Recording";
-"start_record_voice" = "start recording your voice";
+"start_record_voice" = "Start recording your voice";
 "stop_record_voice" = "Stop recording your voice";
+"play_record" = "Play recording";
+"stop_play_record" = "Stop playing recording";
+"start_play_audio_voice" = "Play your audio recording";
+"stop_play_audio_voice" = "Stop your audio recording";
 "play" = "Play";
 "stop" = "Stop";
 "transription_view_description" = "Record, Transcribe and Play";
 "alert" = "Alert";
 "no_record_error" = "No audio recording found, please record.";
+"transcribed_speech" = "Transcribed Speech";

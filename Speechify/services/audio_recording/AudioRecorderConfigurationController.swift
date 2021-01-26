@@ -24,7 +24,9 @@ class AudioRecorderConfigurationController {
         audioRecordingSession = AVAudioSession.sharedInstance()
         
         do {
-            try audioRecordingSession.setCategory(.playAndRecord, mode: .default)
+            try audioRecordingSession.setCategory(.playAndRecord,
+                                                  mode: .default,
+                                                  options: [.duckOthers])
             try audioRecordingSession.setActive(true)
             audioRecordingSession.requestRecordPermission() { [unowned self]  allowed in
                 if allowed {
