@@ -22,9 +22,10 @@ class PlayAudioWithTextHighlightingService {
         return _sentenceWithHighlightedWord.eraseToAnyPublisher()
     }
     
+    
     func setup(audioURL: URL,
          transcribedSpeech: GoogleSpeechToText.Alternative ) {
-        audioPlayer = AudioPlayerService(audioURL: audioURL)
+        audioPlayer.setup(audioURL: audioURL)
         self.transcribedSpeech = transcribedSpeech
         segmentTranscriptionIntoTimeInterval()
     }
@@ -52,7 +53,7 @@ class PlayAudioWithTextHighlightingService {
     }
     
     func playAudioAndHighlightText() {
-        audioPlayer.playAudio()
+        audioPlayer.playStopAudio()
         audioPlayer.playerTimeIntervalPublisher.sink { [weak self] value in
             self?.highlightTextWithTime(time: value)
         }

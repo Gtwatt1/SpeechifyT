@@ -15,7 +15,8 @@ struct TranscriberView: View {
         audioRecordingService: AudioRecordingService(
             audioRecorderController: AudioRecorderConfigurationController()),
         audioTextHighlighter: PlayAudioWithTextHighlightingService(),
-        transcriberApiService: TranscriberApiService()
+        transcriberApiService: TranscriberApiService(),
+        audioPlayer: AudioPlayerService()
     )
     
     let pageDescription: LocalizedStringKey = "transription_view_description"
@@ -59,7 +60,6 @@ struct TranscriberView: View {
             Button(action: {
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 viewModel.startStopAudioRecording()
-
             }, label: {
                 Text(viewModel.recordButtonTitle)
                     .multilineTextAlignment(.center)
@@ -84,7 +84,7 @@ struct TranscriberView: View {
             Button(action: {
                 viewModel.playAudio()
             }, label: {
-                Text("Play")
+                Text(viewModel.playButtonTitle)
                     .frame(width: 120, height: 20)
                     .font(.body)
                     .padding()

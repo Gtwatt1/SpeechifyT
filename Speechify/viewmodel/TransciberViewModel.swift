@@ -19,21 +19,32 @@ class TransciberViewModel: ObservableObject {
     private var audioTextHighlighter: PlayAudioWithTextHighlightingService
     private var transcriberApiService: TranscriberApiService
     private var subscribers = Set<AnyCancellable>()
-    private(set) var recordButtonTitle: LocalizedStringKey = "record"
-    private(set) var playButtonTitle: LocalizedStringKey = "play"
-    private(set) var isRecordingAudio: Bool = false
-    private(set) var isPlayingAudio: Bool = false
+    @Published private(set) var recordButtonTitle: LocalizedStringKey = "record"
+    @Published private(set) var playButtonTitle: LocalizedStringKey = "play"
+    @Published private(set) var isRecordingAudio: Bool = false
+    @Published private(set) var isPlayingAudio: Bool = false
     private var recordedAudioURL: URL?
     private var transcriptionWithTimeStamp: GoogleSpeechToText.Alternative?
     @Published private(set) var state = TransciberViewState.idle
     
     init( audioRecordingService: AudioRecordingService,
           audioTextHighlighter: PlayAudioWithTextHighlightingService,
-          transcriberApiService: TranscriberApiService) {
+          transcriberApiService: TranscriberApiService,
+          audioPlayer: AudioPlayerService) {
         self.audioRecordingService = audioRecordingService
         self.audioTextHighlighter = audioTextHighlighter
         self.transcriberApiService = transcriberApiService
-
+        audioTextHighlighter.audioPlayer = audioPlayer
+        
+        audioPlayer.isPlayingAudio
+            .map({$0 ? "stop" : "play"})
+            .assign(to: \.playButtonTitle, on: self)
+            .store(in: &subscribers)
+        
+        audioPlayer.isPlayingAudio
+            .assign(to: \.isPlayingAudio, on: self)
+            .store(in: &subscribers)
+        
         audioRecordingService.isRecordingState
             .map({$0 ? "stop_record" : "record"})
             .assign(to: \.recordButtonTitle, on: self)
@@ -78,7 +89,6 @@ class TransciberViewModel: ObservableObject {
     func playAudio() {
         if let recordedAudioURL = recordedAudioURL,
            let transcriptionWithTimeStamp = transcriptionWithTimeStamp {
-            audioTextHighlighter = PlayAudioWithTextHighlightingService()
             audioTextHighlighter.setup(
                 audioURL: recordedAudioURL,
                 transcribedSpeech: transcriptionWithTimeStamp
